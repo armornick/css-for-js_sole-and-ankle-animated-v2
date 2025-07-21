@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 import { WEIGHTS } from "../../constants";
 
-const NavLink = ({ href, children }) => {
+const NavLink = ({ children, ...delegated }) => {
 	return (
-		<Wrapper href={href}>
+		<Wrapper {...delegated}>
 			<MainText>{children}</MainText>
-			<HoverText>{children}</HoverText>
+			<HoverText aria-hidden={true}>{children}</HoverText>
 		</Wrapper>
 	);
 };

@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 import { WEIGHTS } from "../../constants";
 
-const NavLink = ({ href, children }) => {
+const NavLink = ({ children, ...delegated }) => {
 	return (
-		<Wrapper href={href}>
+		<Wrapper {...delegated}>
 			<MainText>{children}</MainText>
-			<HoverText>{children}</HoverText>
+			<HoverText aria-hidden={true}>{children}</HoverText>
 		</Wrapper>
 	);
 };
@@ -44,6 +44,7 @@ const MainText = styled.span`
 const HoverText = styled.span`
 	position: absolute;
 	left: 0;
+	font-weight: ${WEIGHTS.bold};
 
 	@media (hover: hover) and (prefers-reduced-motion: no-preference) {
 		transition: transform var(--transition-time);
