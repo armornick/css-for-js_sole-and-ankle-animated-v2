@@ -73,7 +73,7 @@ const Overlay = styled(Dialog.Overlay)`
 	}
 `;
 
-const slideAndFadeIn = keyframes`
+const slideIn = keyframes`
   0% {
     transform: translateX(100%);
   }
@@ -97,7 +97,7 @@ const Content = styled(Dialog.Content)`
 
 	@media (prefers-reduced-motion: no-preference) {
 		--slide-in-time: 500ms;
-		animation: ${slideAndFadeIn} var(--slide-in-time)
+		animation: ${slideIn} var(--slide-in-time)
 			cubic-bezier(0.95, 0.05, 0.795, 0.035); /* easeInExpo */
 	}
 `;
