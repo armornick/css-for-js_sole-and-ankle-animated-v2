@@ -26,12 +26,30 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 					</VisuallyHidden>
 					<Filler />
 					<Nav>
-						<NavLink href="/sale">Sale</NavLink>
-						<NavLink href="/new">New&nbsp;Releases</NavLink>
-						<NavLink href="/men">Men</NavLink>
-						<NavLink href="/women">Women</NavLink>
-						<NavLink href="/kids">Kids</NavLink>
-						<NavLink href="/collections">Collections</NavLink>
+						<NavLink style={{ "--nav-link-index": 0 }} href="/sale">
+							Sale
+						</NavLink>
+						<NavLink style={{ "--nav-link-index": 1 }} href="/new">
+							New&nbsp;Releases
+						</NavLink>
+						<NavLink style={{ "--nav-link-index": 2 }} href="/men">
+							Men
+						</NavLink>
+						<NavLink
+							style={{ "--nav-link-index": 3 }}
+							href="/women"
+						>
+							Women
+						</NavLink>
+						<NavLink style={{ "--nav-link-index": 4 }} href="/kids">
+							Kids
+						</NavLink>
+						<NavLink
+							style={{ "--nav-link-index": 5 }}
+							href="/collections"
+						>
+							Collections
+						</NavLink>
 					</Nav>
 					<Footer>
 						<SubLink href="/terms">Terms and Conditions</SubLink>
@@ -78,7 +96,8 @@ const Content = styled(Dialog.Content)`
 	flex-direction: column;
 
 	@media (prefers-reduced-motion: no-preference) {
-		animation: ${slideAndFadeIn} 500ms
+		--slide-in-time: 500ms;
+		animation: ${slideAndFadeIn} var(--slide-in-time)
 			cubic-bezier(0.95, 0.05, 0.795, 0.035); /* easeInExpo */
 	}
 `;
@@ -105,6 +124,17 @@ const NavLink = styled.a`
 
 	&:first-of-type {
 		color: var(--color-secondary);
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: opacity 100ms;
+		transition-delay: calc(
+			var(--slide-in-time) + 100ms * var(--nav-link-index)
+		);
+
+		@starting-style {
+			opacity: 0;
+		}
 	}
 `;
 
